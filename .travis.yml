@@ -2,8 +2,6 @@ language: java
 
 stages:
   - cleaning maven
-  - connecting
-  - building
   - publishing
 
 jobs:
@@ -12,14 +10,15 @@ jobs:
       script:
         - mvn clean verify --file ./simple-api/pom.xml org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=apikey
 
-    - stage: connecting
-      script: docker login -u $user -p $password
-
-    - stage: building
+    - stage: publishing
       script:
+        #connecting
+        - docker login -u $user -p $password
+        #building
         - docker build -t $user/repo_simple_api:database database
         - docker build -t $user/repo_simple_api:httpd httpd
         - docker build -t $user/repo_simple_api:simple-api simple-api
+        #publishing
         - docker push $user/repo_simple_api:database
         - docker push $user/repo_simple_api:httpd
         - docker push $user/repo_simple_api:simple-api
