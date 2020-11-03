@@ -1,6 +1,6 @@
 language: java
 script:
-  - mvn clean verify --file org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=devopsorga20
+  - mvn clean verify --file ./simple-api/pom.xml org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=devopsorga20
   - cd ..
 
   #connect to docker hub
