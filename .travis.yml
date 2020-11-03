@@ -1,6 +1,9 @@
 language: java
 script:
   - mvn clean verify --file ./simple-api/pom.xml
+  - mvn clean verify org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=devopsorga20
+  - cd ..
+
   #connect to docker hub
   - docker login -u $user -p $password
 
@@ -13,5 +16,19 @@ script:
   - docker push $user/repo_simple_api:database
   - docker push $user/repo_simple_api:httpd
   - docker push $user/repo_simple_api:simple-api
+cache:
+  directories:
+    -$HOME/.m2
+
+services:
+  - docker
+
+
+addons:
+sonarcloud:
+organization: "devopsorga20"
+token: $sonarcloud_token
+
+
 
 
