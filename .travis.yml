@@ -5,11 +5,11 @@ script:
   - docker login -u $user -p $password
 
  #build
-  - docker build -t $user/repo_simple_api:database
-  - docker build -t $user/repo_simple_api:httpd
-  - docker build -t $user/repo_simple_api:simple-api
+  - docker build -t $user/repo_simple_api:database database
+  - docker build -t $user/repo_simple_api:httpd httpd
+  - docker build -t $user/repo_simple_api:simple-api simple-api
 
   #images publication
-  - docker push -t $user/repo_simple_api:database
-  - docker push -t $user/repo_simple_api:httpd
-  - docker push -t $user/repo_simple_api:simple-api
+  - docker push $user/repo_simple_api:database
+  - docker push $user/repo_simple_api:httpd
+  - docker push $user/repo_simple_api:simple-api
