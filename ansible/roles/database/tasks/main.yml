@@ -1,0 +1,12 @@
+- name: launch database
+  docker_container:
+    name: database
+    image: kaoutarbennadi/repo_simple_api:database
+    state: started
+    networks:
+      - name: app-network
+    env:
+      POSTGRES_PASSWORD: "{{ db_password }}"
+      POSTGRES_USER: "{{ db_user }}"
+      POSTGRES_DB: db
+

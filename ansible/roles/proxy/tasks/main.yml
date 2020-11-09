@@ -1,0 +1,9 @@
+- name: launch proxy
+  docker_container:
+    name: reverse_proxy
+    image: kaoutarbennadi/repo_simple_api:httpd
+    state: started
+    ports:
+     - "80:80"
+    networks:
+     - name: app-network

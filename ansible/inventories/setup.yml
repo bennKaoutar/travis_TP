@@ -1,0 +1,8 @@
+all:
+  vars:
+    ansible_user: centos
+    db_user: usr
+    db_password: pwd
+  children:
+    prod:
+      hosts: kaoutar.bennadi.takima.cloud

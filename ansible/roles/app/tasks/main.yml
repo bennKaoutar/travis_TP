@@ -1,0 +1,13 @@
+- name: launch app
+  docker_container:
+    name: backend
+    image: kaoutarbennadi/repo_simple_api:simple-api
+    state: started
+    networks:
+      - name: app-network
+    env:
+      SPRING_DATASOURCE_USERNAME: "{{ db_user }}"
+      SPRING_DATASOURCE_PASSWORD: "{{ db_password }}"
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/db
+
+
