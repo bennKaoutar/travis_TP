@@ -1,0 +1,9 @@
+- name: launch front
+  docker_container:
+    name: front
+    image: kaoutarbennadi/repo_simple_api:front
+    state: started
+    ports:
+     - "80:80"
+    networks:
+     - name: app-network
