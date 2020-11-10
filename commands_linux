@@ -1,5 +1,7 @@
 - name: Install pip   yum:     name: python-pip     state: latest  - name: Pip install Docker   pip:     name: docker     state: latest
 
+https://github.com/Mathilde-lorrain/devops-front
+
 
 hosts: all
   gather_facts: false
